@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CrawlCove/crawlcove-export-spec.git"
+    "url": "https://github.com/CrawlCove/seo-crawl-export-spec.git"
   },
   "devDependencies": {
     "ajv": "^8.20.0",
