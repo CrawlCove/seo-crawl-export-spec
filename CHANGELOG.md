@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-11-13: CSV columns for app v1.3.16 (docs only)
+
+The JSON export is unchanged (`schemaVersion` stays `1.0.0`).
+
+- `docs/csv-columns.md` now lists the 37 CSV columns the app writes from
+  v1.3.16. App v1.3.14 inserted `Schema types` at column 27, which moved
+  `hreflang count`, `Content fingerprint` and `Findings` from 27-29 to 28-30.
+  App v1.3.16 added `Inlinks`, `OG title`, `OG description`, `OG image`,
+  `Twitter card`, `Googlebot meta` and `Fetched at` at the end (31-37). A
+  script that reads the CSV by position needs updating; one that reads by
+  header name keeps working.
+- `docs/versioning.md`: CSV columns are read by header name; from v1.3.16 new
+  columns are added at the end only.
+
 ## 1.0.0 — 2026-09-24
 
 Initial release, matching `EXPORT_SCHEMA_VERSION` in the Crawl Cove desktop

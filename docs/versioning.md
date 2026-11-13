@@ -29,9 +29,12 @@ Only the **full-crawl JSON export** (`reports:export-json` in the app) is
 versioned here today. The app's other CSV exports (findings, tasks, keyword
 movement, meta bulk-edit) are not yet part of this spec — the full-crawl CSV
 export is documented in [csv-columns.md](csv-columns.md) as a fixed-order
-companion to the JSON export, but does not carry its own version field; treat
-column additions there as append-only (new columns are added at the end) and
-watch this repo's CHANGELOG for column changes.
+companion to the JSON export, but does not carry its own version field. Read
+its columns by header name. From app v1.3.16 the existing 37 columns keep
+their positions and new columns are added at the end; the app's test suite
+pins this order. One earlier release broke that rule: v1.3.14 inserted
+`Schema types` at column 27, moving three columns right. Column changes are
+recorded in this repo's CHANGELOG.
 
 ## Validating an export
 
