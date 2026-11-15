@@ -1,3 +1,5 @@
+<a href="https://crawlcove.com/download?utm_source=github&utm_medium=readme&utm_campaign=seo-crawl-export-spec"><img src="https://raw.githubusercontent.com/CrawlCove/.github/main/banners/seo-crawl-export-spec.svg" width="1200" alt="seo-crawl-export-spec: An open format for site crawl data: JSON Schema and CSV column reference, with a real sample export and a validator script." /></a>
+
 # crawlcove-export-spec
 
 The JSON Schema and CSV column reference for [Crawl Cove](https://crawlcove.com)'s SEO crawl export — validate, script against, or build integrations on top of a Crawl Cove crawl export without reverse-engineering it.
