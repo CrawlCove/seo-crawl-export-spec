@@ -3,9 +3,9 @@
 The Crawl Cove desktop app's Reports page can also export the full crawl as
 CSV (RFC 4180: comma-separated, `\r\n` line endings, UTF-8 with a BOM so Excel
 opens it correctly). It contains the same page set as the
-[JSON export](../schema/crawl-export.schema.json), every JSON field, and eight
+[JSON export](../schema/crawl-export.schema.json), every JSON field, and nine
 CSV-only columns (marked below). This is the order the app writes from
-v1.3.16 (37 columns):
+v1.3.18 (38 columns):
 
 **Read columns by header name, not by position.** Column 27 (`Schema types`)
 was inserted mid-row in app v1.3.14, which moved `hreflang count`,
@@ -51,6 +51,7 @@ new columns are only added at the end; see [versioning.md](versioning.md).
 | 35 | `Twitter card` | string | CSV only, since v1.3.16. `<meta name="twitter:card">` content. Empty if absent. |
 | 36 | `Googlebot meta` | string | CSV only, since v1.3.16. Raw `<meta name="googlebot">` content. Empty if absent. |
 | 37 | `Fetched at` | string | CSV only, since v1.3.16. When the crawler fetched the page, ISO 8601 in UTC (`2026-11-13T02:27:26.595Z`). Empty if not recorded. |
+| 38 | `Redirect statuses` | string | CSV only, since v1.3.18. The status code of each redirect hop, in order, joined with `; ` (`301`, `301; 302`). Empty when the URL did not redirect. With `Final URL`, `Status` and `Redirect hops` it is a redirect check for a site move: crawl the old URLs as a list and read one row per URL. |
 ## Differences from the JSON export
 
 CSV has no native boolean or null, so two fields are re-encoded on the way
