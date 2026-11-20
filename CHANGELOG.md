@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-20: CSV column 38 for app v1.3.18 (docs only)
+
+The JSON export is unchanged (`schemaVersion` stays `1.0.0`).
+
+- `docs/csv-columns.md` lists column 38, `Redirect statuses`, which app v1.3.18
+  added at the end of the full-crawl CSV: the status code of each redirect hop,
+  so a migration sheet can tell a 301 from a 302. Added at the end, so a script
+  reading by header name or by position up to 37 keeps working.
+
 ## 2026-11-13: CSV columns for app v1.3.16 (docs only)
 
 The JSON export is unchanged (`schemaVersion` stays `1.0.0`).
