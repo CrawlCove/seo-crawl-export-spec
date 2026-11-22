@@ -63,7 +63,7 @@ column 38 and everything before it never move. Read these by header name.
 2. **Extract from pages**, one per selector: `Extract "<selector>"`, the values
    found joined with ` | `. Empty when nothing matched or the row is not HTML.
 3. **Search Console**, since v1.3.20, only when the site has Search Console data.
-   Four columns over the 28 days ending on the latest synced day:
+   Five columns over the 28 days ending on the latest synced day:
 
 | Column | Type | Notes |
 | --- | --- | --- |
@@ -71,6 +71,7 @@ column 38 and everything before it never move. Read these by header name.
 | `Search impressions (28 days)` | integer | Impressions, as above. |
 | `Search CTR % (28 days)` | number | Clicks / impressions as a percent, 2 decimal places. Empty with no impressions. |
 | `Search position (28 days)` | number | Average position weighted by impressions, 1 decimal place. Empty with no impressions. |
+| `Top search query (28 days)` | string | The query that brought the most clicks (then impressions). Empty when Search Console reports only anonymised queries for the page. |
 
 URLs are matched the way Search Console groups a property: http and https,
 `www.` and a trailing slash count as one URL. A row that redirects is left
