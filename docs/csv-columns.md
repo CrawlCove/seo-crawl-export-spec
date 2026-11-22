@@ -52,6 +52,31 @@ new columns are only added at the end; see [versioning.md](versioning.md).
 | 36 | `Googlebot meta` | string | CSV only, since v1.3.16. Raw `<meta name="googlebot">` content. Empty if absent. |
 | 37 | `Fetched at` | string | CSV only, since v1.3.16. When the crawler fetched the page, ISO 8601 in UTC (`2026-11-13T02:27:26.595Z`). Empty if not recorded. |
 | 38 | `Redirect statuses` | string | CSV only, since v1.3.18. The status code of each redirect hop, in order, joined with `; ` (`301`, `301; 302`). Empty when the URL did not redirect. With `Final URL`, `Status` and `Redirect hops` it is a redirect check for a site move: crawl the old URLs as a list and read one row per URL. |
+## Optional columns after column 38
+
+Some crawls add columns after `Redirect statuses`, always in this order, so
+column 38 and everything before it never move. Read these by header name.
+
+1. **Find text on pages**, one per phrase set on the crawl: `Contains "<phrase>"`,
+   the number of times the phrase appears in the page's visible text. Empty when
+   the page was not searched (not HTML).
+2. **Extract from pages**, one per selector: `Extract "<selector>"`, the values
+   found joined with ` | `. Empty when nothing matched or the row is not HTML.
+3. **Search Console**, since v1.3.20, only when the site has Search Console data.
+   Four columns over the 28 days ending on the latest synced day:
+
+| Column | Type | Notes |
+| --- | --- | --- |
+| `Search clicks (28 days)` | integer | Clicks Search Console reports for the URL. `0` when Google did not show it in the window. |
+| `Search impressions (28 days)` | integer | Impressions, as above. |
+| `Search CTR % (28 days)` | number | Clicks / impressions as a percent, 2 decimal places. Empty with no impressions. |
+| `Search position (28 days)` | number | Average position weighted by impressions, 1 decimal place. Empty with no impressions. |
+
+URLs are matched the way Search Console groups a property: http and https,
+`www.` and a trailing slash count as one URL. A row that redirects is left
+empty, so the destination's clicks are not counted twice. The JSON export does
+not carry these columns.
+
 ## Differences from the JSON export
 
 CSV has no native boolean or null, so two fields are re-encoded on the way
